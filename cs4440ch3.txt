@@ -1,0 +1,94 @@
+
+
+
+
+				carlos ruvalcaba
+
+
+
+
+1.Describe the differences among short-term, medium-term, and long term scheduling.
+
+The short-term scheduler selects from the ready processes the next process to run 
+and gives it the CPU. The long-term scheduler selects from the pool of processes 
+that are waiting on disk and loads the selected process(es) into memory. These processes
+ have not yet begun their execution. The medium-term scheduler takes processes that are 
+ currently in memory and selects those to be swapped out to disk. These processes will be 
+ swapped back in at a later point. 
+
+
+2.Describe the actions taken by a kernel to context-switch between processes.
+
+1. In response to a clock interrupt, the OS saves the PC and user stack pointer
+of the currently executing process, and transfers control to the kernel clock
+interrupt handler,
+2. The clock interrupt handler saves the rest of the registers, as well as other
+machine state, such as the state of the floating point registers, in the process
+PCB.3. The OS invokes the scheduler to determine the next process to execute,
+4. The OS then retrieves the state of the next process from its PCB, and restores
+the registers. This restore operation takes the processor back to the state in
+which this process was previously interrupted, executing in user code with
+user mode privileges.
+
+
+
+3.Construct a process tree similar to Figure 3.8. To obtain process information for the 
+UNIX or Linux system, use the command ps -ael. Use the command man ps to get more 
+information about the ps command.
+
+
+4.Explain the role of the init process on UNIX and Linux systems in regards to process 
+termination.
+
+When a process is terminated, it briefly moves to the zombie state and remains in that 
+state until the parent invokes a call to wait(). When this occurs, the process id as well 
+as entry in the process table are both released. However, if a parent does not invoke 
+wait(), the child process remains a zombie as long as the parent remains alive. Once 
+the parent process terminates, the init process becomes the new parent of the
+zombie. Periodically, the init process calls wait() which ultimately releases the pid 
+and entry in the process table of the zombie process.
+
+5.Including the initial parent process, how many processes are created by the program 
+shown in Figure 3.32?
+
+16
+
+6.Explain the circumstances when the line of code marked printf("LINE J") in 
+Figure 3.33 is reached.
+
+he call to exec() replaces the address space of the process with the program 
+specified as the parameter to exec(). If the call to exec() succeeds, the new 
+program is now running and control from the call to exec() never returns. In 
+this scenario, the line printf("Line J"); would never be performed. However, 
+if an error occurs in the call to exec(), the function returns control and therefor 
+the line printf("Line J"); would be performed.
+
+
+
+
+
+7.Using the program in Figure 3.34, identify the values of pid at lines A, B, C, and D.
+ (If you are not executing the program, you may assume that the actual pids of the parent
+  and child are 2600 and 2603, respectively.)
+
+A = 0 
+B = 2603
+C = 2603 
+D = 2600
+
+8.Give an example of a situation in which ordinary pipes are more suitable than 
+named pipes and an example of a situation in which named pipes are more suitable 
+than ordinary pipes.
+
+Simple communication works well with ordinary pipes. An ordinary pipe can be used where 
+the producer writes the file to the pipe and the consumer reads the files and counts the 
+number of characters in the file. 
+
+
+9.Using the program shown in Figure 3.35, explain what the output will be at lines X 
+and Y.
+
+Because the child is a copy of the parent, any changes the child makes will occur 
+in its copy of the data and won't be reflected in the parent. As a result, the values 
+output by the child at line X are 0, -1, -4, -9, -16. The values output by the parent 
+at line Y are 0, 1, 2, 3, 4

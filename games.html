@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Search</title>
+    <script src="Scripts/jquery-1.7.1.min.js"></script>
+        <script src="gameP.js"></script>
+
+    <link href="Content/Site.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="content">
+        <style>
+</style>
+        <div id="screenContainer">
+            <div id="display">
+                <div id="input">
+                    <form>
+                        <!--Screen Title-->
+                        <h1>Search...
+                        </h1>
+                        <!--Screen Sub-Title-->
+                        <h3>For a Dragon...Text Adventure Game by @DungeonBard
+                        </h3>
+                        <div id="GameOverDiv">
+                        </div>
+                        <div id="GameDiv">
+                            <!--The following div is hidden or shown depending on if its a non-mobile browser-->
+                            <div id="Keyboard">
+                                <label>Command:</label>
+                                <input type="text" name="userInput" class="buttonMod" id="userInput" />
+                            </div>
+                            <!--The following div is hidden or shown depending on if its a mobile browser-->
+                            <div id="controllers">
+                                <!--We use a table for the simple alignment of the buttons-->
+                                <table>
+                                    <tr>
+                                        <td></td>
+                                        <td>
+                                            <input type='button' class='button' value='N' title="North" style="left: 200px" /></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input type='button' class='button' value='W' title="West" /></td>
+                                        <td></td>
+                                        <td>
+                                            <input type='button' class='button' value='E' title="East" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>
+                                            <input type='button' class='button' value='S' title="South" /></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input type='button' class='button' value='P' title="Pickup" /></td>
+                                        <td>
+                                            <input type='button' class='button' value='A' title="About" /></td>
+                                        <td>
+                                            <input type='button' class='button' value='?' title="Help" /></td>
+                                    </tr>
+                                </table>
+                            </div>
+                            </div>
+                            <div id="output"></div>
+                    </form>
+                    </div>
+                </div>
+            </div>
+</body>
+</html>
